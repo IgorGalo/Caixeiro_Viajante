@@ -1,65 +1,102 @@
-"""
-Algoritmo Genético para o Problema do Caixeiro Viajante (PCV)
-===============================================================
-Implementação baseada nos slides "Grafos - Algoritmo genético para
-solução do Problema do Caixeiro Viajante" (Prof. Vinícius da Fonseca
-Vieira - UFSJ) e no exemplo manuscrito de execução do AG.
-
-Elementos implementados conforme os slides:
-    - Representação: vetor de n posições com permutação das cidades (slide 11)
-    - Função objetivo: soma das distâncias do circuito, ver Eq. (1) (slide 7 e 10)
-    - Seleção: roleta viciada, proporcional ao fitness (slides 19-20)
-    - Cruzamento: OX - order crossover (slides 12-14)
-    - Mutação: troca de posição gene a gene, com taxa pm (slides 15-17)
-    - Elitismo: mantém os melhores indivíduos entre gerações (slide 18)
-    - Critério de parada: número máximo de gerações (slide 24)
-"""
-
 import random
 import time
 import itertools
+import sys
 
 
-# =============================================================== #
-#  Estrutura do indivíduo
-# =============================================================== #
 class Individuo:
     def __init__(self, dna):
         self.dna = dna       # permutação das cidades (o cromossomo)
         self.fitness = 0     # distância total do circuito
 
 
-# =============================================================== #
-#  Leitura da instância (matriz de distâncias, ex.: lau15_dist.txt)
-# =============================================================== #
-def carregaMatrizDistancias(caminho_arquivo):
-    """
-    Lê um arquivo de matriz de distâncias no formato n x n
-    (uma linha por cidade, valores separados por espaço),
-    como o lau15_dist.txt / sgb128_dist.txt citados no slide 22.
-    """
-    matriz = []
+def listaNomesGrafos(caminho_arquivo="grafos.txt"):
+
+    nomes = []
     with open(caminho_arquivo, "r") as arquivo:
         for linha in arquivo:
-            valores = linha.split()
-            if valores:
+            linha_simples = linha.strip()
+            if linha_simples.startswith("[") and linha_simples.endswith("]"):
+                nomes.append(linha_simples[1:-1])
+    return nomes
+
+def carregaMatrizDistancias(grafo_escolhido, caminho_arquivo="grafos.txt"):
+
+    matriz = []
+    lendo_alvo = False
+ 
+    with open(caminho_arquivo, "r") as arquivo:
+        for linha in arquivo:
+            linha_simples = linha.strip()
+ 
+            # pula linha vazia
+            if not linha_simples:
+                continue
+ 
+            # se a linha é um título
+            if linha_simples.startswith("[") and linha_simples.endswith("]"):
+                # e esse for o grafo requisitado, aciona a flag
+                if linha_simples[1:-1] == grafo_escolhido:
+                    lendo_alvo = True
+                # caso contrário, abaixa a flag
+                else:
+                    lendo_alvo = False
+                continue
+ 
+            # se a flag estiver acionada, guarda a linha da matriz
+            if lendo_alvo:
+                valores = linha_simples.split()
                 matriz.append([float(v) for v in valores])
+ 
+    if not matriz:
+        raise ValueError(
+            f"Grafo '{grafo_escolhido}' não encontrado em '{caminho_arquivo}'."
+        )
+ 
     return matriz
 
 
-# =============================================================== #
-#  Criação do DNA (representação - permutação das cidades)
-# =============================================================== #
+def escolheInstancia(caminho_arquivo="grafos.txt"):
+
+    nomes_disponiveis = listaNomesGrafos(caminho_arquivo)
+ 
+    if not nomes_disponiveis:
+        raise ValueError(f"Nenhum grafo (seção [nome]) encontrado em '{caminho_arquivo}'.")
+ 
+    # permite passar o nome do grafo direto pela linha de comando
+    if len(sys.argv) > 1:
+        nome_escolhido = sys.argv[1]
+        if nome_escolhido in nomes_disponiveis:
+            print(f"Usando grafo informado por linha de comando: {nome_escolhido}")
+            return nome_escolhido
+        else:
+            print(f"Aviso: grafo '{nome_escolhido}' não encontrado em '{caminho_arquivo}'. "
+                  f"Prosseguindo com seleção interativa.\n")
+ 
+    print("===== Grafos disponíveis =====")
+    for indice, nome in enumerate(nomes_disponiveis, start=1):
+        print(f"  [{indice}] {nome}")
+    print("=" * 31)
+ 
+    while True:
+        escolha = input(f"Escolha o grafo (1-{len(nomes_disponiveis)}): ").strip()
+ 
+        if escolha.isdigit():
+            escolha_num = int(escolha)
+            if 1 <= escolha_num <= len(nomes_disponiveis):
+                return nomes_disponiveis[escolha_num - 1]
+ 
+        print("Opção inválida. Digite um número da lista.\n")
+
+
+
+
 def criaDNA(n_cidades):
     dna = list(range(n_cidades))
     random.shuffle(dna)
     return dna
 
 
-# =============================================================== #
-#  Função objetivo (Equação 1 do slide 7)
-#  f(pi) = soma_{i=1}^{n-1} rho(pi(i), pi(i+1)) + rho(pi(n), pi(1))
-# =============================================================== #
 def calculaFitness(individuo, matriz_distancias):
     n = len(individuo.dna)
     distancia_total = 0.0
@@ -72,24 +109,11 @@ def calculaFitness(individuo, matriz_distancias):
     individuo.fitness = distancia_total
 
 
-# =============================================================== #
-#  Seleção por roleta viciada (slides 19-20)
-#  Como o problema é de MINIMIZAÇÃO, o peso é o inverso do fitness:
-#  quanto menor a distância, maior a "fatia" da roleta.
-# =============================================================== #
 def selecaoPais(populacao):
     pesos = [1 / individuo.fitness for individuo in populacao]
     return random.choices(populacao, weights=pesos, k=2)
 
 
-# =============================================================== #
-#  Cruzamento OX - order crossover (slides 12-14)
-#  1) Sorteiam-se dois pontos de corte
-#  2) O trecho entre os pontos do pai1 é preservado no filho,
-#     na mesma posição
-#  3) O restante do filho é preenchido na ordem em que os genes
-#     aparecem no pai2, pulando os que já estão no trecho herdado
-# =============================================================== #
 def cruzamentoOX(pai1, pai2):
     n = len(pai1.dna)
 
@@ -102,9 +126,6 @@ def cruzamentoOX(pai1, pai2):
     dna_filho = [None] * n
     dna_filho[inicio:fim + 1] = trecho_preservado
 
-    # percorre o pai2 a partir da posição subsequente ao 2º ponto
-    # sorteado (como descrito no slide 14), preenchendo o filho
-    # de forma circular e pulando genes já usados
     genes_pai2 = pai2.dna[fim + 1:] + pai2.dna[:fim + 1]
     genes_restantes = [gene for gene in genes_pai2 if gene not in trecho_preservado]
 
@@ -116,12 +137,6 @@ def cruzamentoOX(pai1, pai2):
     return Individuo(dna_filho)
 
 
-# =============================================================== #
-#  Mutação por troca de posição (slides 15-17)
-#  Para cada gene do cromossomo sorteia-se r em [0,1];
-#  se r <= taxa_mutacao, sorteia-se outra posição e troca-se
-#  os dois valores.
-# =============================================================== #
 def mutacao(individuo, taxa_mutacao):
     n = len(individuo.dna)
     for i in range(n):
@@ -131,9 +146,6 @@ def mutacao(individuo, taxa_mutacao):
             individuo.dna[i], individuo.dna[j] = individuo.dna[j], individuo.dna[i]
 
 
-# =============================================================== #
-#  Loop principal do AG (segue o fluxograma do slide 23)
-# =============================================================== #
 def algoritmoGenetico(matriz_distancias, tam_populacao, taxa_cruzamento,
                        taxa_mutacao, num_geracoes, tam_elite=2):
     n_cidades = len(matriz_distancias)
@@ -149,8 +161,6 @@ def algoritmoGenetico(matriz_distancias, tam_populacao, taxa_cruzamento,
         populacao.sort(key=lambda ind: ind.fitness)
         historico_melhor_fitness.append(populacao[0].fitness)
 
-        # elitismo: os melhores indivíduos passam direto para a
-        # próxima geração (slide 18)
         nova_populacao = [Individuo(populacao[i].dna[:]) for i in range(tam_elite)]
         for i in range(tam_elite):
             nova_populacao[i].fitness = populacao[i].fitness
@@ -182,14 +192,13 @@ def algoritmoGenetico(matriz_distancias, tam_populacao, taxa_cruzamento,
     return populacao[0], historico_melhor_fitness
 
 
-# =============================================================== #
-#  Execução principal - experimento fatorial (slide 25)
-#  Varia: tamanho da população, taxa de cruzamento, taxa de mutação
-# =============================================================== #
 if __name__ == "__main__":
 
-    caminho_arquivo = "lau15_dist.txt"   # troque pelo caminho da sua instância
-    matriz_distancias = carregaMatrizDistancias(caminho_arquivo)
+    caminho_arquivo_grafos = "grafos.txt"  
+    grafo_escolhido = escolheInstancia(caminho_arquivo_grafos)  
+    print(f"\nGrafo selecionado: {grafo_escolhido}\n")
+    matriz_distancias = carregaMatrizDistancias(grafo_escolhido, caminho_arquivo_grafos)
+
 
     num_geracoes = 500
     numero_de_testes_por_config = 5   # repetições de cada configuração

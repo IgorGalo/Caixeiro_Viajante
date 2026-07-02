@@ -1,33 +1,33 @@
 ===== RESULTADOS DO EXPERIMENTO FATORIAL - AG PCV =====
 
-Pop=  20 | Cruzamento=0.70 | Mutacao=0.01 -> melhor=291.00 | media=300.20
-Pop=  20 | Cruzamento=0.70 | Mutacao=0.05 -> melhor=291.00 | media=312.80
-Pop=  20 | Cruzamento=0.70 | Mutacao=0.10 -> melhor=307.00 | media=338.60
-Pop=  20 | Cruzamento=0.85 | Mutacao=0.01 -> melhor=291.00 | media=303.00
-Pop=  20 | Cruzamento=0.85 | Mutacao=0.05 -> melhor=291.00 | media=297.00
-Pop=  20 | Cruzamento=0.85 | Mutacao=0.10 -> melhor=322.00 | media=328.00
-Pop=  20 | Cruzamento=0.95 | Mutacao=0.01 -> melhor=291.00 | media=295.00
-Pop=  20 | Cruzamento=0.95 | Mutacao=0.05 -> melhor=291.00 | media=301.40
-Pop=  20 | Cruzamento=0.95 | Mutacao=0.10 -> melhor=291.00 | media=316.20
-Pop=  50 | Cruzamento=0.70 | Mutacao=0.01 -> melhor=291.00 | media=303.40
-Pop=  50 | Cruzamento=0.70 | Mutacao=0.05 -> melhor=291.00 | media=295.40
-Pop=  50 | Cruzamento=0.70 | Mutacao=0.10 -> melhor=291.00 | media=329.40
-Pop=  50 | Cruzamento=0.85 | Mutacao=0.01 -> melhor=291.00 | media=294.20
-Pop=  50 | Cruzamento=0.85 | Mutacao=0.05 -> melhor=291.00 | media=300.20
-Pop=  50 | Cruzamento=0.85 | Mutacao=0.10 -> melhor=299.00 | media=322.40
-Pop=  50 | Cruzamento=0.95 | Mutacao=0.01 -> melhor=291.00 | media=292.60
-Pop=  50 | Cruzamento=0.95 | Mutacao=0.05 -> melhor=291.00 | media=309.60
-Pop=  50 | Cruzamento=0.95 | Mutacao=0.10 -> melhor=291.00 | media=301.40
-Pop= 100 | Cruzamento=0.70 | Mutacao=0.01 -> melhor=291.00 | media=297.00
-Pop= 100 | Cruzamento=0.70 | Mutacao=0.05 -> melhor=291.00 | media=311.00
-Pop= 100 | Cruzamento=0.70 | Mutacao=0.10 -> melhor=291.00 | media=313.00
-Pop= 100 | Cruzamento=0.85 | Mutacao=0.01 -> melhor=291.00 | media=303.00
-Pop= 100 | Cruzamento=0.85 | Mutacao=0.05 -> melhor=291.00 | media=294.20
-Pop= 100 | Cruzamento=0.85 | Mutacao=0.10 -> melhor=295.00 | media=321.00
-Pop= 100 | Cruzamento=0.95 | Mutacao=0.01 -> melhor=291.00 | media=301.80
-Pop= 100 | Cruzamento=0.95 | Mutacao=0.05 -> melhor=291.00 | media=314.00
-Pop= 100 | Cruzamento=0.95 | Mutacao=0.10 -> melhor=291.00 | media=314.60
+Pop=  20 | Cruzamento=0.70 | Mutacao=0.01 -> melhor=88709.00 | media=94139.40
+Pop=  20 | Cruzamento=0.70 | Mutacao=0.05 -> melhor=110032.00 | media=113315.00
+Pop=  20 | Cruzamento=0.70 | Mutacao=0.10 -> melhor=119995.00 | media=127632.00
+Pop=  20 | Cruzamento=0.85 | Mutacao=0.01 -> melhor=94123.00 | media=96235.20
+Pop=  20 | Cruzamento=0.85 | Mutacao=0.05 -> melhor=108296.00 | media=116968.40
+Pop=  20 | Cruzamento=0.85 | Mutacao=0.10 -> melhor=125693.00 | media=128103.60
+Pop=  20 | Cruzamento=0.95 | Mutacao=0.01 -> melhor=94233.00 | media=96886.40
+Pop=  20 | Cruzamento=0.95 | Mutacao=0.05 -> melhor=118719.00 | media=121342.40
+Pop=  20 | Cruzamento=0.95 | Mutacao=0.10 -> melhor=124229.00 | media=126710.80
+Pop=  50 | Cruzamento=0.70 | Mutacao=0.01 -> melhor=90944.00 | media=93932.80
+Pop=  50 | Cruzamento=0.70 | Mutacao=0.05 -> melhor=108094.00 | media=111705.80
+Pop=  50 | Cruzamento=0.70 | Mutacao=0.10 -> melhor=121766.00 | media=125766.00
+Pop=  50 | Cruzamento=0.85 | Mutacao=0.01 -> melhor=94103.00 | media=98556.60
+Pop=  50 | Cruzamento=0.85 | Mutacao=0.05 -> melhor=111790.00 | media=115544.60
+Pop=  50 | Cruzamento=0.85 | Mutacao=0.10 -> melhor=123985.00 | media=125971.00
+Pop=  50 | Cruzamento=0.95 | Mutacao=0.01 -> melhor=98141.00 | media=103700.20
+Pop=  50 | Cruzamento=0.95 | Mutacao=0.05 -> melhor=111028.00 | media=120039.60
+Pop=  50 | Cruzamento=0.95 | Mutacao=0.10 -> melhor=124050.00 | media=127757.40
+Pop= 100 | Cruzamento=0.70 | Mutacao=0.01 -> melhor=90477.00 | media=93990.80
+Pop= 100 | Cruzamento=0.70 | Mutacao=0.05 -> melhor=109229.00 | media=113224.80
+Pop= 100 | Cruzamento=0.70 | Mutacao=0.10 -> melhor=124951.00 | media=126805.40
+Pop= 100 | Cruzamento=0.85 | Mutacao=0.01 -> melhor=97611.00 | media=102765.20
+Pop= 100 | Cruzamento=0.85 | Mutacao=0.05 -> melhor=113943.00 | media=118777.20
+Pop= 100 | Cruzamento=0.85 | Mutacao=0.10 -> melhor=128737.00 | media=130303.00
+Pop= 100 | Cruzamento=0.95 | Mutacao=0.01 -> melhor=100502.00 | media=107345.40
+Pop= 100 | Cruzamento=0.95 | Mutacao=0.05 -> melhor=121905.00 | media=124506.40
+Pop= 100 | Cruzamento=0.95 | Mutacao=0.10 -> melhor=126552.00 | media=129190.20
 
-Melhor solução encontrada em toda a bateria: 291.00
-Rota: [0, 10, 3, 5, 7, 9, 13, 11, 2, 6, 4, 8, 14, 1, 12]
-Tempo total: 0 minuto(s) e 41 segundo(s)
+Melhor solução encontrada em toda a bateria: 88709.00
+Rota: [9, 119, 88, 112, 82, 14, 8, 50, 63, 47, 34, 69, 30, 52, 32, 95, 19, 121, 33, 15, 13, 62, 17, 28, 126, 127, 59, 104, 26, 25, 109, 39, 60, 66, 110, 118, 102, 77, 92, 1, 84, 99, 48, 7, 0, 116, 64, 11, 74, 35, 125, 85, 108, 107, 113, 55, 45, 12, 58, 72, 40, 20, 54, 106, 31, 73, 3, 27, 57, 71, 86, 56, 83, 114, 21, 37, 123, 29, 49, 61, 2, 103, 78, 100, 4, 120, 97, 93, 105, 80, 81, 22, 75, 42, 18, 70, 89, 117, 90, 87, 68, 53, 10, 98, 23, 91, 16, 41, 51, 36, 44, 76, 43, 65, 124, 101, 122, 96, 24, 67, 46, 38, 6, 111, 5, 94, 115, 79]
+Tempo total: 2 minuto(s) e 2 segundo(s)
