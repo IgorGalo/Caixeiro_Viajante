@@ -1,0 +1,33 @@
+===== RESULTADOS DO EXPERIMENTO FATORIAL - AG PCV =====
+
+Pop=  20 | Cruzamento=0.70 | Mutacao=0.01 -> melhor=291.00 | media=300.20
+Pop=  20 | Cruzamento=0.70 | Mutacao=0.05 -> melhor=291.00 | media=312.80
+Pop=  20 | Cruzamento=0.70 | Mutacao=0.10 -> melhor=307.00 | media=338.60
+Pop=  20 | Cruzamento=0.85 | Mutacao=0.01 -> melhor=291.00 | media=303.00
+Pop=  20 | Cruzamento=0.85 | Mutacao=0.05 -> melhor=291.00 | media=297.00
+Pop=  20 | Cruzamento=0.85 | Mutacao=0.10 -> melhor=322.00 | media=328.00
+Pop=  20 | Cruzamento=0.95 | Mutacao=0.01 -> melhor=291.00 | media=295.00
+Pop=  20 | Cruzamento=0.95 | Mutacao=0.05 -> melhor=291.00 | media=301.40
+Pop=  20 | Cruzamento=0.95 | Mutacao=0.10 -> melhor=291.00 | media=316.20
+Pop=  50 | Cruzamento=0.70 | Mutacao=0.01 -> melhor=291.00 | media=303.40
+Pop=  50 | Cruzamento=0.70 | Mutacao=0.05 -> melhor=291.00 | media=295.40
+Pop=  50 | Cruzamento=0.70 | Mutacao=0.10 -> melhor=291.00 | media=329.40
+Pop=  50 | Cruzamento=0.85 | Mutacao=0.01 -> melhor=291.00 | media=294.20
+Pop=  50 | Cruzamento=0.85 | Mutacao=0.05 -> melhor=291.00 | media=300.20
+Pop=  50 | Cruzamento=0.85 | Mutacao=0.10 -> melhor=299.00 | media=322.40
+Pop=  50 | Cruzamento=0.95 | Mutacao=0.01 -> melhor=291.00 | media=292.60
+Pop=  50 | Cruzamento=0.95 | Mutacao=0.05 -> melhor=291.00 | media=309.60
+Pop=  50 | Cruzamento=0.95 | Mutacao=0.10 -> melhor=291.00 | media=301.40
+Pop= 100 | Cruzamento=0.70 | Mutacao=0.01 -> melhor=291.00 | media=297.00
+Pop= 100 | Cruzamento=0.70 | Mutacao=0.05 -> melhor=291.00 | media=311.00
+Pop= 100 | Cruzamento=0.70 | Mutacao=0.10 -> melhor=291.00 | media=313.00
+Pop= 100 | Cruzamento=0.85 | Mutacao=0.01 -> melhor=291.00 | media=303.00
+Pop= 100 | Cruzamento=0.85 | Mutacao=0.05 -> melhor=291.00 | media=294.20
+Pop= 100 | Cruzamento=0.85 | Mutacao=0.10 -> melhor=295.00 | media=321.00
+Pop= 100 | Cruzamento=0.95 | Mutacao=0.01 -> melhor=291.00 | media=301.80
+Pop= 100 | Cruzamento=0.95 | Mutacao=0.05 -> melhor=291.00 | media=314.00
+Pop= 100 | Cruzamento=0.95 | Mutacao=0.10 -> melhor=291.00 | media=314.60
+
+Melhor solução encontrada em toda a bateria: 291.00
+Rota: [0, 10, 3, 5, 7, 9, 13, 11, 2, 6, 4, 8, 14, 1, 12]
+Tempo total: 0 minuto(s) e 41 segundo(s)
