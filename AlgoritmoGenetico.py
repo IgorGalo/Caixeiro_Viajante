@@ -63,7 +63,6 @@ def escolheInstancia(caminho_arquivo="grafos.txt"):
     if not nomes_disponiveis:
         raise ValueError(f"Nenhum grafo (seção [nome]) encontrado em '{caminho_arquivo}'.")
  
-    # permite passar o nome do grafo direto pela linha de comando
     if len(sys.argv) > 1:
         nome_escolhido = sys.argv[1]
         if nome_escolhido in nomes_disponiveis:
@@ -89,8 +88,6 @@ def escolheInstancia(caminho_arquivo="grafos.txt"):
         print("Opção inválida. Digite um número da lista.\n")
 
 
-
-
 def criaDNA(n_cidades):
     dna = list(range(n_cidades))
     random.shuffle(dna)
@@ -104,7 +101,7 @@ def calculaFitness(individuo, matriz_distancias):
         cidade_atual = individuo.dna[i]
         proxima_cidade = individuo.dna[i + 1]
         distancia_total += matriz_distancias[cidade_atual][proxima_cidade]
-    # fecha o circuito, voltando para a cidade de origem
+    
     distancia_total += matriz_distancias[individuo.dna[n - 1]][individuo.dna[0]]
     individuo.fitness = distancia_total
 
@@ -199,11 +196,9 @@ if __name__ == "__main__":
     print(f"\nGrafo selecionado: {grafo_escolhido}\n")
     matriz_distancias = carregaMatrizDistancias(grafo_escolhido, caminho_arquivo_grafos)
 
-
     num_geracoes = 500
     numero_de_testes_por_config = 5   # repetições de cada configuração
 
-    # defina aqui os 3 valores de cada parâmetro para o fatorial
     tamanhos_populacao = [20, 50, 100]
     taxas_cruzamento = [0.7, 0.85, 0.95]
     taxas_mutacao = [0.01, 0.05, 0.10]
@@ -214,7 +209,10 @@ if __name__ == "__main__":
     tempo_inicio = time.time()
 
     with open("tabela_de_resultados.txt", "w") as arquivo:
-        arquivo.write("===== RESULTADOS DO EXPERIMENTO FATORIAL - AG PCV =====\n\n")
+
+        arquivo.write("===== RESULTADOS =====\n\n")
+        arquivo.write(f"Grafo utilizado: {grafo_escolhido}\n")
+        arquivo.write(f"Numero de cidades: {len(matriz_distancias)}\n\n")
 
         combinacoes = itertools.product(tamanhos_populacao, taxas_cruzamento, taxas_mutacao)
 
