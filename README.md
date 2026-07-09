@@ -1,27 +1,12 @@
 # Caixeiro Viajante
 
-Implementação de um Algoritmo Genético para resolver o **Problema do Caixeiro Viajante**.
+Implementação de um Algoritmo Genético para resolver o Problema do Caixeiro Viajante.
 
-## O Problema do Caixeiro Viajante
+## Estrutura do projeto
 
-Dado um conjunto de cidades e as distâncias entre cada par delas, o objetivo é encontrar a rota mais curta possível que visite todas as cidades exatamente uma vez e retorne à cidade de origem.
-
-
-## Algoritmo Genético
-
-Um Algoritmo Genético é uma metaheurística inspirada na evolução biológica e na seleção natural. Em vez de buscar a solução ótima de forma exaustiva, é trabalhado com uma **população** de soluções candidatas que evolui ao longo de sucessivas **gerações**, favorecendo indivíduos mais aptos e combinando suas características para gerar descendentes potencialmente melhores.
-
-No contexto do nosso problema, cada indivíduo possuí um **dna**, o qual representa uma possível rota, codificada como uma permutação das cidades. A qualidade de cada indivíduo é medida pelo seu **fitness**, calculado como a distância total do circuito — quanto menor o fitness, melhor o indivíduo.
-
-### Parâmetros e mecanismos utilizados
-
-- **Seleção dos pais**: Feita por roleta ponderada pelo inverso do fitness (`1/fitness`), de forma que rotas mais curtas tenham maior probabilidade de serem escolhidas para reprodução.
-- **Cruzamento**: Utiliza o método *Order Crossover* (OX), que preserva um trecho contíguo de um dos pais e completa o restante da rota com os genes do outro pai, na ordem em que aparecem, evitando cidades repetidas.
-- **Taxa de cruzamento**: probabilidade de que dois pais selecionados de fato gerem filhos por cruzamento; caso contrário, os filhos são cópias diretas dos pais.
-- **Mutação**: Para cada gene (cidade) da rota, existe uma probabilidade (taxa de mutação) de que ele seja trocado de posição com outro gene escolhido aleatoriamente, introduzindo diversidade genética e ajudando a evitar convergência prematura.
-- **Elitismo**: Os melhores indivíduos de cada geração são copiados diretamente para a próxima geração sem sofrer cruzamento ou mutação, garantindo que boas soluções encontradas não se percam ao longo do processo evolutivo. Sempre dois indivíduos de uma população são escolhidos por meio do elitismo.
-- **Tamanho da população**: Números de indivíduos de uma geração.
-- **Número de gerações**: Quantidade de ciclos de seleção, cruzamento, mutação e elitismo pelos quais a população passa. Foi utilizado 500 gerações em todas as baterias de testes.
+AlgoritmoGenetico.py,
+grafos.txt e
+tabela_de_resultados.txt.
 
 ## Bateria de testes (experimento fatorial)
 
@@ -39,7 +24,7 @@ Os resultados são salvos no arquivo `tabela_de_resultados.txt`.
 
 ## Instruções de Execução
 
-Para iniciar o algoritmo de Dijkstra:
+Para iniciar o algoritmo:
 1. É necessário ter Python 3 instalado.
 2. Abra o seu terminal na pasta do projeto.
 3. Digite o comando abaixo e pressione Enter:
